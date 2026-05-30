@@ -1,16 +1,17 @@
+const display = document.getElementById("display");
+const startBtn = document.getElementById("startBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const resetBtn = document.getElementById("resetBtn");
+const resumeBtn = document.getElementById("resumeBtn");
+
 let seconds = 0;
+let milliseconds = 0;
 let isRunning = false;
 let timer;
 
 /*those elements live in your HTML page. But your JS file is separate — it can't just magically see them. You have to tell JS to go find them. */
 // so document is the whole html page
 // getElemntById is get the element in the html file and find it by id
-
-const display = document.getElementById("display");
-const startBtn = document.getElementById("startBtn");
-const pauseBtn = document.getElementById("pauseBtn");
-const resetBtn = document.getElementById("resetBtn");
-const resumeBtn = document.getElementById("resumeBtn");
 
 function updateDisplay() {
   let hours = Math.floor(seconds / 3600);
@@ -22,7 +23,9 @@ function updateDisplay() {
     ":" +
     (minutes < 10 ? "0" + minutes : minutes) +
     ":" +
-    (secs < 10 ? "0" + secs : secs);
+    (secs < 10 ? "0" + secs : secs) +
+    ":" +
+    (milliseconds < 10 ? "0" + milliseconds : milliseconds);
 }
 
 // function start() {
@@ -36,22 +39,26 @@ function start() {
   if (isRunning) return;
   isRunning = true;
   timer = setInterval(function () {
-    seconds++;
+    milliseconds++;
+    if (milliseconds === 100) {
+      milliseconds = 0;
+      seconds++;
+    }
     updateDisplay();
-  }, 1000);
+  }, 10);
 }
 
 function pause() {
-    isRunning = false;
-    clearInterval(timer); //this one is the one that freezes the timer 
-
+  isRunning = false;
+  clearInterval(timer); //this one is the one that freezes the timer
 }
 
 function reset() {
-    isRunning = false;
-    clearInterval(timer);
-    seconds = 0;
-    updateDisplay();
+  isRunning = false;
+  clearInterval(timer);
+  seconds = 0;
+  milliseconds = 0;
+  updateDisplay();
 }
 
 //-- connceting the buttons---//
