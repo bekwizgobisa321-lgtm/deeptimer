@@ -13,12 +13,16 @@ const resetBtn = document.getElementById("resetBtn");
 const resumeBtn = document.getElementById("resumeBtn");
 
 function updateDisplay() {
-  let minutes = Math.floor(seconds / 60);
+  let hours = Math.floor(seconds / 3600);
+  let minutes = Math.floor((seconds % 3600) / 60);
   let secs = seconds % 60;
 
-  display.textContent = (minutes < 10 ? "0" + minutes : minutes)(
-    secs < 10 ? "0" + secs : secs,
-  );
+  display.textContent =
+    (hours < 10 ? "0" + hours : hours) +
+    ":" +
+    (minutes < 10 ? "0" + minutes : minutes) +
+    ":" +
+    (secs < 10 ? "0" + secs : secs);
 }
 
 // function start() {
@@ -51,5 +55,8 @@ function reset() {
 }
 
 //-- connceting the buttons---//
+startBtn.addEventListener("click", start);
+pauseBtn.addEventListener("click", pause);
+resetBtn.addEventListener("click", reset);
 
-
+//wow i finshed it my first js project
