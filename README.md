@@ -22,3 +22,15 @@ open index.html
 ```
 
 
+## Tech
+
+- HTML
+- CSS
+- Vanilla JavaScript
+
+## Why I built this
+
+A hands-on exercise to learn DOM manipulation and how `setInterval` works in JavaScript. No AI, no copy-paste — written from scratch.
+
+Good starting point if you're also learning the basics of JavaScript timers and event listeners.
+
