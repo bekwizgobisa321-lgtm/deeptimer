@@ -34,3 +34,6 @@ A hands-on exercise to learn DOM manipulation and how `setInterval` works in Jav
 
 Good starting point if you're also learning the basics of JavaScript timers and event listeners.
 
+## License
+
+MIT
